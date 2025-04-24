@@ -42,7 +42,7 @@ module "eks" {
         echo 'foo bar'
       EOT
 
-      vpc_security_group_ids = [aws_security_group.node_group_two.id]
+      vpc_security_group_ids = [aws_security_group.node_group_one.id]
     }
   }
 

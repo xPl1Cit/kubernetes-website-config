@@ -20,17 +20,6 @@ resource "aws_security_group" "node_group_one" {
     Name = "node-group-one"
   }
 }
-
-resource "aws_security_group" "node_group_two" {
-  name        = "node-group-two-sg"
-  description = "Security group for node group two"
-  vpc_id      = module.vpc.vpc_id
-
-  tags = {
-    Name = "node-group-two"
-  }
-}
-
 locals {
   cluster_name = "${var.project}-${var.environment}-eks"
 }

@@ -1,22 +1,28 @@
 resource "kubernetes_deployment" "deployment" {
   metadata {
     name      = "${var.project}-deployment"
-    labels    = { App = var.project }
+    labels    = {
+      App = var.project
+    }
   }
+
   spec {
     replicas                  = 3
     progress_deadline_seconds = 300
+
     selector {
       match_labels = {
         App = var.project
       }
     }
+
     template {
       metadata {
         labels = {
           App = var.project
         }
       }
+
       spec {
         container {
           image = var.container
@@ -24,6 +30,7 @@ resource "kubernetes_deployment" "deployment" {
           port {
             container_port = 80
           }
+
           resources {
             limits = {
               cpu    = "0.2"
